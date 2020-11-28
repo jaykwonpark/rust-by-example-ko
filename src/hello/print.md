@@ -1,37 +1,37 @@
-# Formatted print
+# 형식을 지정하는 출력
 
-Printing is handled by a series of [`macros`][macros] defined in [`std::fmt`][fmt]
-some of which include:
+출력은 [`std::fmt`][fmt] 에 정의된 몇개의 [`macro`][macros] 로 처리합니다.
 
-* `format!`: write formatted text to [`String`][string]
-* `print!`: same as `format!` but the text is printed to the console (io::stdout).
-* `println!`: same as `print!` but a newline is appended.
-* `eprint!`: same as `format!` but the text is printed to the standard error (io::stderr).
-* `eprintln!`: same as `eprint!`but a newline is appended.
+* `format!`: 형식 지정된 문자열을 [`String`][string] 에 출력합니다.
+* `print!`: `format!` 과 동일하지만, 문자열을 콘솔 (io::stdout) 에 출력합니다.
+* `println!`: `print!` 과 동일하지만, 개행 문자를 덧 붙여줍니다.
+* `eprint!`: `format!` 과 동일하지만, 문자열을 표준 오류 스트림 (io::stderr) 에 출력합니다.
+* `eprintln!`: `eprint!`과 동일하지만, 개행 문자를 덧 붙여줍니다.
 
-All parse text in the same fashion. As a plus, Rust checks formatting
-correctness at compile time.
+이들은 모두 동일한 방식으로 문자열을 분석합니다. 그리고, 러스트는 컴파일 시점에
+형식지정이 올바른지 여부를 검사합니다.
+
 
 ```rust,editable,ignore,mdbook-runnable
 fn main() {
-    // In general, the `{}` will be automatically replaced with any
-    // arguments. These will be stringified.
-    println!("{} days", 31);
+    // 일반적으로, `{}`는 자료형(type)에 관계없이 주어진 인지로 대치됩니다.
+    // 이때, 인자들은 문자열로 변환됩니다.
+    println!("{} 번째 날", 31);
 
-    // Without a suffix, 31 becomes an i32. You can change what type 31 is
-    // by providing a suffix. The number 31i64 for example has the type i64.
+    // 자료형 표시(suffix)가 없으므로 31은 i32 형이 됩니다. 31 의 자료형을 바꾸려면
+    // 자료형 표시(suffix)를 해주면 됩니다. 31i64 라고 하면 i64 형이 됩니다.
 
-    // There are various optional patterns this works with. Positional
-    // arguments can be used.
+    // 중괄호를 이용해서 다양한 방법으로 형식을 지정할 수 있습니다.
+    // 인자의 위치를 이용할 수도 있습니다.
     println!("{0}, this is {1}. {1}, this is {0}", "Alice", "Bob");
 
-    // As can named arguments.
+    // 이름을 줄 수도 있습니다.
     println!("{subject} {verb} {object}",
              object="the lazy dog",
              subject="the quick brown fox",
              verb="jumps over");
 
-    // Special formatting can be specified after a `:`.
+    // `:` 의 뒤에 특별한 형식을 지정할 수도 있습니다.
     println!("{} of {:b} people know binary, the other half doesn't", 1, 2);
 
     // You can right-align text with a specified width. This will output
@@ -80,10 +80,9 @@ Implementing the `fmt::Display` trait automatically implements the
    check the [`std::fmt`][fmt] documentation for setting the number of
    decimals to display)
 
-### See also:
+### 참고:
 
-[`std::fmt`][fmt], [`macros`][macros], [`struct`][structs],
-and [`traits`][traits]
+[`std::fmt`][fmt], [`macros`][macros], [`struct`][structs], [`traits`][traits]
 
 [fmt]: https://doc.rust-lang.org/std/fmt/
 [macros]: ../macros.md

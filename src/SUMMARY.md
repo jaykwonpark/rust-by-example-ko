@@ -4,7 +4,7 @@
 
 - [Hello World](hello.md)
     - [코멘트](hello/comment.md)
-    - [Formatted print](hello/print.md)
+    - [형식을 지정하는 출력](hello/print.md)
         - [Debug](hello/print/print_debug.md)
         - [Display](hello/print/print_display.md)
             - [Testcase: List](hello/print/print_display/testcase_list.md)
